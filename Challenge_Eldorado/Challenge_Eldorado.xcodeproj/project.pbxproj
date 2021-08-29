@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		C4580FD426DC142400003617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD326DC142400003617 /* AppDelegate.swift */; };
 		C4580FD626DC142400003617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD526DC142400003617 /* SceneDelegate.swift */; };
-		C4580FD826DC142400003617 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD726DC142400003617 /* ViewController.swift */; };
+		C4580FD826DC142400003617 /* AllRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD726DC142400003617 /* AllRepositoriesViewController.swift */; };
 		C4580FDE26DC142400003617 /* Challenge_Eldorado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4580FDC26DC142400003617 /* Challenge_Eldorado.xcdatamodeld */; };
 		C4580FE026DC142700003617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4580FDF26DC142700003617 /* Assets.xcassets */; };
 		C4580FEE26DC142700003617 /* Challenge_EldoradoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FED26DC142700003617 /* Challenge_EldoradoTests.swift */; };
 		C4580FF926DC142700003617 /* Challenge_EldoradoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FF826DC142700003617 /* Challenge_EldoradoUITests.swift */; };
-		C460309E26DC1E9D00E09AA1 /* SegmentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C460309D26DC1E9D00E09AA1 /* SegmentedController.swift */; };
+		C46030A026DC31E900E09AA1 /* ViewCodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C460309F26DC31E900E09AA1 /* ViewCodeConfiguration.swift */; };
+		C46030A226DC33DF00E09AA1 /* SegmentedViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46030A126DC33DF00E09AA1 /* SegmentedViewControler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 		C4580FD026DC142400003617 /* Challenge_Eldorado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge_Eldorado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4580FD326DC142400003617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4580FD526DC142400003617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C4580FD726DC142400003617 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C4580FD726DC142400003617 /* AllRepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRepositoriesViewController.swift; sourceTree = "<group>"; };
 		C4580FDD26DC142400003617 /* Challenge_Eldorado.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Challenge_Eldorado.xcdatamodel; sourceTree = "<group>"; };
 		C4580FDF26DC142700003617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4580FE426DC142700003617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +49,8 @@
 		C4580FF426DC142700003617 /* Challenge_EldoradoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Challenge_EldoradoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4580FF826DC142700003617 /* Challenge_EldoradoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge_EldoradoUITests.swift; sourceTree = "<group>"; };
 		C4580FFA26DC142700003617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C460309D26DC1E9D00E09AA1 /* SegmentedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedController.swift; sourceTree = "<group>"; };
+		C460309F26DC31E900E09AA1 /* ViewCodeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeConfiguration.swift; sourceTree = "<group>"; };
+		C46030A126DC33DF00E09AA1 /* SegmentedViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewControler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +103,12 @@
 			children = (
 				C4580FD326DC142400003617 /* AppDelegate.swift */,
 				C4580FD526DC142400003617 /* SceneDelegate.swift */,
-				C4580FD726DC142400003617 /* ViewController.swift */,
+				C46030A126DC33DF00E09AA1 /* SegmentedViewControler.swift */,
+				C4580FD726DC142400003617 /* AllRepositoriesViewController.swift */,
 				C4580FDF26DC142700003617 /* Assets.xcassets */,
 				C4580FE426DC142700003617 /* Info.plist */,
 				C4580FDC26DC142400003617 /* Challenge_Eldorado.xcdatamodeld */,
-				C460309D26DC1E9D00E09AA1 /* SegmentedController.swift */,
+				C460309F26DC31E900E09AA1 /* ViewCodeConfiguration.swift */,
 			);
 			path = Challenge_Eldorado;
 			sourceTree = "<group>";
@@ -256,10 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4580FD826DC142400003617 /* ViewController.swift in Sources */,
+				C46030A026DC31E900E09AA1 /* ViewCodeConfiguration.swift in Sources */,
+				C4580FD826DC142400003617 /* AllRepositoriesViewController.swift in Sources */,
+				C46030A226DC33DF00E09AA1 /* SegmentedViewControler.swift in Sources */,
 				C4580FD426DC142400003617 /* AppDelegate.swift in Sources */,
 				C4580FD626DC142400003617 /* SceneDelegate.swift in Sources */,
-				C460309E26DC1E9D00E09AA1 /* SegmentedController.swift in Sources */,
 				C4580FDE26DC142400003617 /* Challenge_Eldorado.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

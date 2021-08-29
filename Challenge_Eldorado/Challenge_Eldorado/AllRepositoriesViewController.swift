@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AllRepositoriesViewController: UIViewController {
     
-    private let segmentedViews = ["All", "Saved"]
+    private lazy var tableview : UITableView = { return UITableView(frame: .zero) }()
     
     override func loadView() {
         let body = UIView(frame: UIScreen.main.bounds)
-        
+        body.backgroundColor = UIColor(red: (41/255), green: (42/255), blue: (48/255), alpha: 1)
         self.view = body
         
         addSegmented()
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         segmented.translatesAutoresizingMaskIntoConstraints = false
         
         segmented.selectedSegmentIndex = 0
+        segmented.selectedSegmentTintColor = UIColor(red: (87/255), green: (84/255), blue: (85/255), alpha: 1)
         
         view.addSubview(segmented)
         

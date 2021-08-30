@@ -44,6 +44,14 @@ extension RepositoryTableViewCell: ViewCodeConfiguration{
     }
     
     func setupConstraint() {
+        
+        name.translatesAutoresizingMaskIntoConstraints = false
+        ownerLogin.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        stargazers_count.translatesAutoresizingMaskIntoConstraints = false
+        license.translatesAutoresizingMaskIntoConstraints = false
+        pushed_at.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
@@ -69,16 +77,13 @@ extension RepositoryTableViewCell: ViewCodeConfiguration{
             pushed_at.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             pushed_at.topAnchor.constraint(equalTo: license.bottomAnchor, constant: 10),
             pushed_at.heightAnchor.constraint(equalToConstant: 30),
+            pushed_at.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
     
     func configureView() {
-        name.translatesAutoresizingMaskIntoConstraints = false
-        ownerLogin.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        stargazers_count.translatesAutoresizingMaskIntoConstraints = false
-        license.translatesAutoresizingMaskIntoConstraints = false
-        pushed_at.translatesAutoresizingMaskIntoConstraints = false
+        
+        
     }
     
 }

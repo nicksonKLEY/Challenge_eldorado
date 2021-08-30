@@ -24,11 +24,11 @@ class SegmentedViewController: UIViewController {
         
         SwiftRepository.requestRepositories { result in
             switch result{
-                case .success(let repository):
-                    self.repositories = repository.items
-                case .failure(let error):
-                    print(error)
-                    self.repositories = []
+            case .success(let repository):
+                self.repositories = repository.items
+            case .failure(let error):
+                print(error)
+                self.repositories = []
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -45,7 +45,7 @@ extension SegmentedViewController : ViewCodeConfiguration{
     func buildHierarchy() {
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
-            }
+    }
     
     func setupConstraint() {
         NSLayoutConstraint.activate([
@@ -116,11 +116,11 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
         repositoryCell.license.text = repository.license?.name ?? "Unknow License"
         
         
-
+        
         if let lastUpdate = repository.pushed_at{
             let formatter = ISO8601DateFormatter()
             let datetime = formatter.date(from: lastUpdate)
-//            formatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+            //            formatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
             
             repositoryCell.pushed_at.text = formatter.string(from: datetime!)
         }
@@ -128,5 +128,10 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
         return repositoryCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let repository = RepositoryDetailView()
+        repository.repository = repositories[indexPath.row]
+        self.navigationController?.pushViewController(repository, animated: true)
+    }
     
 }

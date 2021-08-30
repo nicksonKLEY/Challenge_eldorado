@@ -12,14 +12,28 @@ class SegmentedViewController: UIViewController {
     private let segmentedViews = ["All", "Saved"]
     
     let segmentedControl = UISegmentedControl()
-    
     let tableView = UITableView()
     
+    var repositories: [SwiftRepository.Repository.Item] = []
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         title = "Swift Repositories"
         
+        SwiftRepository.requestRepositories { result in
+            switch result{
+                case .success(let repository):
+                    self.repositories = repository.items
+                case .failure(let error):
+                    print(error)
+                    self.repositories = []
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
         applyViewCode()
         
@@ -62,7 +76,7 @@ extension SegmentedViewController : ViewCodeConfiguration{
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RepositoryCell")
+        tableView.register(RepositoryTableViewCell.self, forCellReuseIdentifier: "RepositoryCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         
@@ -86,12 +100,17 @@ extension SegmentedViewController : ViewCodeConfiguration{
 
 extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath as IndexPath)
-        return cell
+        guard let repositoryCell = cell as? RepositoryTableViewCell else {
+            return UITableViewCell() }
+        
+        repositoryCell.name.text = repositories[indexPath.row].name
+        
+        return repositoryCell
     }
     
     

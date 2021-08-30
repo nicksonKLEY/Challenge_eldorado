@@ -15,6 +15,7 @@ class SwiftRepository {
         
         struct Item: Codable {
             var id: Int?
+            var name: String?
             var owner: Owner?
             var description: String?
             var stargazers_count: Int?

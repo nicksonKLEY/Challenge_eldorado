@@ -110,10 +110,9 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
         let repository = repositories[indexPath.row]
         
         repositoryCell.name.text = repository.name
-        repositoryCell.ownerLogin.text = repository.name
+        repositoryCell.ownerLogin.text = repository.owner?.login ?? ""
         repositoryCell.descriptionLabel.text = repository.description
-        repositoryCell.stargazers_count.text = String(repository.stargazers_count ?? 0)
-        repositoryCell.ownerLogin.text = repository.owner?.login ?? "Unknow User"
+        repositoryCell.stargazers_count.text = String(repository.stargazers_count!)
         repositoryCell.license.text = repository.license?.name ?? "Unknow License"
         
         
@@ -123,7 +122,7 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
             let datetime = formatter.date(from: lastUpdate)
 //            formatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
             
-            repositoryCell.textLabel?.text = formatter.string(from: datetime!)
+            repositoryCell.pushed_at.text = formatter.string(from: datetime!)
         }
         
         return repositoryCell

@@ -105,10 +105,26 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath as IndexPath)
-        guard let repositoryCell = cell as? RepositoryTableViewCell else {
-            return UITableViewCell() }
+        guard let repositoryCell = cell as? RepositoryTableViewCell else { return UITableViewCell() }
         
-        repositoryCell.name.text = repositories[indexPath.row].name
+        let repository = repositories[indexPath.row]
+        
+        repositoryCell.name.text = repository.name
+        repositoryCell.ownerLogin.text = repository.name
+        repositoryCell.descriptionLabel.text = repository.description
+        repositoryCell.stargazers_count.text = String(repository.stargazers_count ?? 0)
+        repositoryCell.ownerLogin.text = repository.owner?.login ?? "Unknow User"
+        repositoryCell.license.text = repository.license?.name ?? "Unknow License"
+        
+        
+
+        if let lastUpdate = repository.pushed_at{
+            let formatter = ISO8601DateFormatter()
+            let datetime = formatter.date(from: lastUpdate)
+//            formatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+            
+            repositoryCell.textLabel?.text = formatter.string(from: datetime!)
+        }
         
         return repositoryCell
     }

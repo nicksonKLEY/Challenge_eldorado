@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C406D5F726DDBE8800BA34A6 /* SegmentedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */; };
 		C406D5F926DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */; };
+		C406D5FC26DDCC7A00BA34A6 /* RepositoryPulls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5FB26DDCC7A00BA34A6 /* RepositoryPulls.swift */; };
 		C4580FD426DC142400003617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD326DC142400003617 /* AppDelegate.swift */; };
 		C4580FD626DC142400003617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD526DC142400003617 /* SceneDelegate.swift */; };
 		C4580FDE26DC142400003617 /* Challenge_Eldorado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4580FDC26DC142400003617 /* Challenge_Eldorado.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewModel.swift; sourceTree = "<group>"; };
 		C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		C406D5FB26DDCC7A00BA34A6 /* RepositoryPulls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPulls.swift; sourceTree = "<group>"; };
 		C4580FD026DC142400003617 /* Challenge_Eldorado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge_Eldorado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4580FD326DC142400003617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4580FD526DC142400003617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		C406D5F226DDBD4800BA34A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C406D5FB26DDCC7A00BA34A6 /* RepositoryPulls.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +184,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		C406D5FD26DDCD9700BA34A6 /* Sharred */ = {
+			isa = PBXGroup;
+			children = (
+				C406D5EE26DDBCBF00BA34A6 /* Protocol */,
+				C406D5F526DDBDFF00BA34A6 /* Extension */,
+			);
+			path = Sharred;
+			sourceTree = "<group>";
+		};
 		C4580FC726DC142400003617 = {
 			isa = PBXGroup;
 			children = (
@@ -204,8 +216,7 @@
 		C4580FD226DC142400003617 /* Challenge_Eldorado */ = {
 			isa = PBXGroup;
 			children = (
-				C406D5F526DDBDFF00BA34A6 /* Extension */,
-				C406D5EE26DDBCBF00BA34A6 /* Protocol */,
+				C406D5FD26DDCD9700BA34A6 /* Sharred */,
 				C406D5EF26DDBD0D00BA34A6 /* Scenes */,
 				C4580FD326DC142400003617 /* AppDelegate.swift */,
 				C4580FD526DC142400003617 /* SceneDelegate.swift */,
@@ -362,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C406D5FC26DDCC7A00BA34A6 /* RepositoryPulls.swift in Sources */,
 				C46030A026DC31E900E09AA1 /* ViewCodeConfiguration.swift in Sources */,
 				C406D5F726DDBE8800BA34A6 /* SegmentedViewModel.swift in Sources */,
 				C46030A826DC76C300E09AA1 /* UIColorExtension.swift in Sources */,

@@ -9,9 +9,9 @@
         <attribute name="pushed_at" optional="YES" attributeType="String"/>
         <attribute name="stargazers_count" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Ow" representedClassName="Ow" syncable="YES" codeGenerationType="class"/>
+    <entity name="Ow" representedClassName="Ow" isAbstract="YES" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="LocalRepository" positionX="257.2204895019531" positionY="-154.5364074707031" width="128" height="14"/>
-        <element name="Ow" positionX="6.214630126953125" positionY="-133.276123046875" width="128" height="14"/>
+        <element name="LocalRepository" positionX="-168.5039978027344" positionY="-417.0314025878906" width="128" height="14"/>
+        <element name="Ow" positionX="-26.64254760742188" positionY="-245.6003723144531" width="128" height="43"/>
     </elements>
 </model>

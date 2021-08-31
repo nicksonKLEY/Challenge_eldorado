@@ -111,7 +111,7 @@ extension RepositoryDetailView : ViewCodeConfiguration{
     
     func configureView() {
         
-        rightButton.title = "Salvar"
+        rightButton.title = viewModel.dataManager.exist(idRepository: viewModel.repository.id) ? "Remover" : "Salvar"
         rightButton.style = .plain
         rightButton.target = viewModel
         rightButton.action = #selector(viewModel.rightNavButtonAction)

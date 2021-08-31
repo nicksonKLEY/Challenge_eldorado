@@ -24,7 +24,7 @@ internal struct RepositoryDataModel{
     func create(_ localModel: LocalRepositoryModel) -> LocalRepository? {
         
         let context = persistentContainer.viewContext
-        let localRepository = NSEntityDescription.insertNewObject(forEntityName: "Investigation", into: context) as! LocalRepository
+        let localRepository = NSEntityDescription.insertNewObject(forEntityName: "LocalRepository", into: context) as! LocalRepository
         
         localRepository.id = Int64(localModel.id ?? 0)
         localRepository.descriptionItem = localModel.descriptionItem
@@ -57,14 +57,16 @@ internal struct RepositoryDataModel{
         return nil
     }
     
-    func exist(idRepository: Int)->Bool{
+    func exist(idRepository: Int?)->Bool{
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<LocalRepository>(entityName: "LocalRepository")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", idRepository as CVarArg)
+        guard let idRepository = idRepository else { return false }
         
         do{
             let repository = try context.fetch(fetchRequest)
-            return repository.count > 0
+            return repository.contains { repo in
+                return repo.id == idRepository
+            }
             
         } catch let error{
             print(error)
@@ -73,8 +75,19 @@ internal struct RepositoryDataModel{
         
     }
     
-    func deleteinvestigation(localRepository: LocalRepository){
+    func delete(localModel: LocalRepositoryModel){
         let context = persistentContainer.viewContext
+        
+        let localRepository = NSEntityDescription.insertNewObject(forEntityName: "LocalRepository", into: context) as! LocalRepository
+        
+        localRepository.id = Int64(localModel.id ?? 0)
+        localRepository.descriptionItem = localModel.descriptionItem
+        localRepository.licenseName = localModel.licenseName
+        localRepository.login = localModel.login
+        localRepository.name = localModel.name
+        localRepository.pushed_at = localModel.pushed_at
+        localRepository.stargazers_count = Int64(localModel.stargazers_count ?? 0)
+        
         context.delete(localRepository)
         do{
             try context.save()

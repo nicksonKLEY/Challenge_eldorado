@@ -14,6 +14,8 @@ class RepositoryDetailViewModel {
     
     var pulls: [Pulls] = []
     
+    let dataManager = RepositoryDataModel.shared
+    
     init(_ repository: Repository.Item) {
         self.repository = repository
         self.title = repository.name ?? ""
@@ -41,6 +43,22 @@ class RepositoryDetailViewModel {
     }
     
     @objc func rightNavButtonAction(){
+        
+        let id = repository.id
+        let name = repository.name
+        let login = repository.owner?.login
+        let description = repository.description
+        let stars = repository.stargazers_count
+        let licenceName = repository.license?.name
+        let pushed_at = repository.pushed_at
+        
+        let localRepository = LocalRepositoryModel(id: id, descriptionItem: description, licenseName: licenceName, login: login, name: name, pushed_at: pushed_at, stargazers_count: stars)
+        
+        if(dataManager.exist(idRepository: repository.id)){
+            dataManager.delete(localModel: localRepository)
+        } else {
+            dataManager.create(localRepository)
+        }
         
     }
 }

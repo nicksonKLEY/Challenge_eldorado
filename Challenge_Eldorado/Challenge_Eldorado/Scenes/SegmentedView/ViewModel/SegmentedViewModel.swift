@@ -92,8 +92,7 @@ class SegmentedViewModel {
         
         var repos: [Repository.Item] = []
         
-        savedRepositories.forEach { repo in
-            
+        for repo in savedRepositories{
             let id = Int(repo.id)
             let name = repo.name
             let owner = Repository.Item.Owner(login: repo.login)
@@ -112,9 +111,9 @@ class SegmentedViewModel {
             return
         }
         
-        let repository = Repository(items: repos)
+        let reposityCopy = Repository(items: repos)
         
-        completion(.success(repository))
+        completion(.success(reposityCopy))
         
     }
     
@@ -124,7 +123,8 @@ class SegmentedViewModel {
         case 0://all repositories
             reloadTable(with: .allRepositories)
         case 1://saved repositories
-            reloadTable(with: .savedRepositories)
+//            reloadTable(with: .savedRepositories)
+            print(0)
         default:
             return
         }

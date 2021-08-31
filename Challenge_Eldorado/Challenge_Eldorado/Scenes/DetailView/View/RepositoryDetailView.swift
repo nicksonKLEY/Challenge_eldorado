@@ -56,6 +56,11 @@ extension RepositoryDetailView : ViewCodeConfiguration{
     
     func configureView() {
         
+        pullsTableView.dataSource = self
+        pullsTableView.delegate = self
+        
+        
+        
     }
 }
 
@@ -67,6 +72,5 @@ extension RepositoryDetailView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
-    
     
 }

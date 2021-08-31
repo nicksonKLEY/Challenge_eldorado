@@ -22,18 +22,21 @@ class SegmentedViewController: UIViewController {
         
         title = viewModel.title
         
-        viewModel.requestRepositories { result in
-            switch result{
-            case .success(let repository):
-                self.viewModel.repositories = repository.items
-            case .failure(let error):
-                print(error)
-                self.viewModel.repositories = []
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+//        viewModel.requestRepositories { result in
+//            switch result{
+//            case .success(let repository):
+//                self.viewModel.repositories = repository.items
+//            case .failure(let error):
+//                print(error)
+//                self.viewModel.repositories = []
+//            }
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+        
+        viewModel.repositoriesDidChange = tableView.reloadData
+        viewModel.reloadTable(with: .allRepositories)
         
         applyViewCode()
         

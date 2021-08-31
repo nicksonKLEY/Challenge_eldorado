@@ -9,7 +9,13 @@ import Foundation
 
 struct Pulls: Codable {
     
-    let title: String
-    let number: Int
-    let body: String
+    let title: String?
+    let number: Int?
+    
+    struct User: Codable {
+        let login: String?
+    }
+    
+    let user: User?
+    let created_at: String?
 }

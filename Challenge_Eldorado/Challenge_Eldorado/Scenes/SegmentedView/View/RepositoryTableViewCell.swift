@@ -36,11 +36,11 @@ extension RepositoryTableViewCell: ViewCodeConfiguration{
     
     func buildHierarchy() {
         contentView.addSubview(name)
-        contentView.addSubview(ownerLogin)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(stargazers_count)
-        contentView.addSubview(license)
         contentView.addSubview(pushed_at)
+        contentView.addSubview(license)
+        contentView.addSubview(ownerLogin)
     }
     
     func setupConstraint() {
@@ -53,35 +53,48 @@ extension RepositoryTableViewCell: ViewCodeConfiguration{
         pushed_at.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            name.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             name.topAnchor.constraint(equalTo: contentView.topAnchor),
-            name.heightAnchor.constraint(equalToConstant: 30),
-            ownerLogin.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            ownerLogin.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            ownerLogin.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10),
-            ownerLogin.heightAnchor.constraint(equalToConstant: 30),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            descriptionLabel.topAnchor.constraint(equalTo: ownerLogin.bottomAnchor, constant: 10),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 30),
-            stargazers_count.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            stargazers_count.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            descriptionLabel.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10),
+            
+            stargazers_count.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             stargazers_count.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
-            stargazers_count.heightAnchor.constraint(equalToConstant: 30),
-            license.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            license.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            license.topAnchor.constraint(equalTo: stargazers_count.bottomAnchor, constant: 10),
-            license.heightAnchor.constraint(equalToConstant: 30),
-            pushed_at.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            pushed_at.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            pushed_at.topAnchor.constraint(equalTo: license.bottomAnchor, constant: 10),
-            pushed_at.heightAnchor.constraint(equalToConstant: 30),
-            pushed_at.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            
+            pushed_at.leadingAnchor.constraint(equalTo: stargazers_count.trailingAnchor, constant: 4),
+            pushed_at.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            pushed_at.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
+            pushed_at.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            
+            license.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            license.topAnchor.constraint(equalTo: pushed_at.bottomAnchor, constant: 10),
+            license.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            
+            ownerLogin.leadingAnchor.constraint(equalTo: license.trailingAnchor, constant: 4),
+            ownerLogin.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            ownerLogin.topAnchor.constraint(equalTo: pushed_at.bottomAnchor, constant: 1),
+            ownerLogin.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
     }
     
     func configureView() {
+        
+        name.textColor = UIColor(red: 155, gree: 35, blue: 147)
+        name.textAlignment = .left
+        name.font = name.font.withSize(30)
+        
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.textAlignment = .justified
+        
+        license.textAlignment = .left
+        license.textColor = UIColor(red: 69, gree: 69, blue: 69)
+        
+        ownerLogin.textAlignment = .right
+        ownerLogin.textColor = UIColor(red: 69, gree: 69, blue: 69)
         
         
     }

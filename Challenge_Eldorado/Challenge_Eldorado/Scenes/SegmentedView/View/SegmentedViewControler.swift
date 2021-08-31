@@ -66,6 +66,8 @@ extension SegmentedViewController : ViewCodeConfiguration{
     
     func configureView() {
         
+        view.backgroundColor = .white
+        
         for (key, item) in viewModel.segmentedViews.enumerated() {
             segmentedControl.insertSegment(withTitle: item, at: key, animated: true)
         }
@@ -97,9 +99,9 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
         let repository = viewModel.repositories[indexPath.row]
         
         repositoryCell.name.text = repository.name
-        repositoryCell.ownerLogin.text = repository.owner?.login ?? ""
+        repositoryCell.ownerLogin.text = "created by: \(repository.owner?.login ?? "")"
         repositoryCell.descriptionLabel.text = repository.description
-        repositoryCell.stargazers_count.text = String(repository.stargazers_count ?? 0)
+        repositoryCell.stargazers_count.text = "⭐️\(String(repository.stargazers_count ?? 0))"
         repositoryCell.license.text = repository.license?.name ?? "Unknow License"
         
         
@@ -108,7 +110,9 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
             
             let formatter = ISO8601DateFormatter()
             if let datetime = formatter.date(from: lastUpdate){
-                repositoryCell.pushed_at.text = formatter.string(from: datetime)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YY/MM/dd"
+                repositoryCell.pushed_at.text = "Last Update: \(dateFormatter.string(from: datetime))"
             }
         }
         

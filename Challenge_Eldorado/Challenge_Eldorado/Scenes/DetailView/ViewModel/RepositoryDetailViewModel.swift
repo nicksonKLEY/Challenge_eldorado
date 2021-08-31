@@ -40,4 +40,7 @@ class RepositoryDetailViewModel {
         task.resume()
     }
     
+    @objc func rightNavButtonAction(){
+        
+    }
 }

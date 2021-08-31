@@ -61,11 +61,16 @@ extension RepositoryDetailView : ViewCodeConfiguration{
     func buildHierarchy() {
         
         view.addSubview(descriptionLabel)
-        view.addSubview(ownerLogin)
         view.addSubview(stargazers_count)
         view.addSubview(pushed_at)
         view.addSubview(license)
+        view.addSubview(ownerLogin)
         view.addSubview(pullsTableView)
+        
+        guard let nav = self.navigationController else {
+            return }
+        
+        nav.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Salvar", style: .plain, target: viewModel, action: #selector(viewModel.rightNavButtonAction))
         
     }
     
@@ -78,27 +83,25 @@ extension RepositoryDetailView : ViewCodeConfiguration{
         pullsTableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             
-            stargazers_count.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 3),
+            stargazers_count.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
             stargazers_count.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            stargazers_count.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15),
             
-            ownerLogin.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 3),
-            ownerLogin.leadingAnchor.constraint(equalTo: stargazers_count.trailingAnchor),
+            pushed_at.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
+            pushed_at.leadingAnchor.constraint(equalTo: stargazers_count.trailingAnchor, constant: 3),
+            pushed_at.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            
+            license.topAnchor.constraint(equalTo: pushed_at.bottomAnchor, constant: 6),
+            license.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            ownerLogin.topAnchor.constraint(equalTo: pushed_at.bottomAnchor, constant: 6),
+            ownerLogin.leadingAnchor.constraint(equalTo: license.trailingAnchor),
             ownerLogin.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             
-            pushed_at.topAnchor.constraint(equalTo: ownerLogin.bottomAnchor, constant: 3),
-            pushed_at.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            pushed_at.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.45),
-            
-            license.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 3),
-            license.leadingAnchor.constraint(equalTo: pushed_at.trailingAnchor),
-            license.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
-            
-            pullsTableView.topAnchor.constraint(equalTo: license.bottomAnchor, constant: 3),
+            pullsTableView.topAnchor.constraint(equalTo: ownerLogin.bottomAnchor, constant: 10),
             pullsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             pullsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             pullsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -109,10 +112,37 @@ extension RepositoryDetailView : ViewCodeConfiguration{
     
     func configureView() {
         
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        
+        stargazers_count.textAlignment = .left
+        
+        pushed_at.textAlignment = .right
+        
+        license.textAlignment = .left
+        license.textColor = UIColor(red: 69, gree: 69, blue: 69)
+        
+        ownerLogin.textAlignment = .right
+        ownerLogin.textColor = UIColor(red: 69, gree: 69, blue: 69)
+        
+        pullsTableView.layer.masksToBounds = true
+        pullsTableView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        pullsTableView.layer.borderWidth = 2.0
+        
         descriptionLabel.text = viewModel.repository.description
-        stargazers_count.text = String(viewModel.repository.stargazers_count ?? 0)
-        ownerLogin.text = viewModel.repository.owner?.login ?? ""
-        pushed_at.text = viewModel.repository.pushed_at
+        stargazers_count.text = "⭐️\(String(viewModel.repository.stargazers_count ?? 0))"
+        ownerLogin.text = "Created By: \(viewModel.repository.owner?.login ?? "")"
+        
+        if let lastUpdate = viewModel.repository.pushed_at {
+            
+            let formatter = ISO8601DateFormatter()
+            if let datetime = formatter.date(from: lastUpdate){
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YY/MM/dd"
+                pushed_at.text = "Last Update: \(dateFormatter.string(from: datetime))"
+            }
+        }
+        
         license.text = viewModel.repository.license?.name ?? ""
         
         pullsTableView.dataSource = self
@@ -134,7 +164,16 @@ extension RepositoryDetailView: UITableViewDelegate, UITableViewDataSource {
         let pull = viewModel.pulls[indexPath.row]
         
         pullCell.title.text = pull.title
-        pullCell.body.text = "#\(String(pull.number ?? 0000)) opened \(pull.created_at ?? "MM-dd") by \(pull.user?.login ?? "")"
+        
+        if let lastUpdate = viewModel.repository.pushed_at {
+            
+            let formatter = ISO8601DateFormatter()
+            if let datetime = formatter.date(from: lastUpdate){
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YY/MM/dd"
+                pullCell.body.text = "#\(String(pull.number ?? 0000)) opened \(dateFormatter.string(from: datetime)) by \(pull.user?.login ?? "")"
+            }
+        }
         
         return pullCell
     }

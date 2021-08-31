@@ -17,6 +17,8 @@ class RepositoryDetailView: UIViewController {
     let license = UILabel()
     let pushed_at = UILabel()
     
+    let rightButton = UIBarButtonItem()
+    
     let pullsTableView = UITableView()
     
     init(_ viewModel: RepositoryDetailViewModel) {
@@ -67,10 +69,7 @@ extension RepositoryDetailView : ViewCodeConfiguration{
         view.addSubview(ownerLogin)
         view.addSubview(pullsTableView)
         
-        guard let nav = self.navigationController else {
-            return }
-        
-        nav.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Salvar", style: .plain, target: viewModel, action: #selector(viewModel.rightNavButtonAction))
+        navigationItem.rightBarButtonItem = rightButton
         
     }
     
@@ -111,6 +110,11 @@ extension RepositoryDetailView : ViewCodeConfiguration{
     }
     
     func configureView() {
+        
+        rightButton.title = "Salvar"
+        rightButton.style = .plain
+        rightButton.target = viewModel
+        rightButton.action = #selector(viewModel.rightNavButtonAction)
         
         descriptionLabel.numberOfLines = 0
         descriptionLabel.lineBreakMode = .byWordWrapping

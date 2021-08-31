@@ -10,6 +10,7 @@
 		C406D5F726DDBE8800BA34A6 /* SegmentedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */; };
 		C406D5F926DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */; };
 		C406D5FC26DDCC7A00BA34A6 /* RepositoryPulls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5FB26DDCC7A00BA34A6 /* RepositoryPulls.swift */; };
+		C406D5FF26DDD73E00BA34A6 /* PullsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5FE26DDD73E00BA34A6 /* PullsTableViewCell.swift */; };
 		C4580FD426DC142400003617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD326DC142400003617 /* AppDelegate.swift */; };
 		C4580FD626DC142400003617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD526DC142400003617 /* SceneDelegate.swift */; };
 		C4580FDE26DC142400003617 /* Challenge_Eldorado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4580FDC26DC142400003617 /* Challenge_Eldorado.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewModel.swift; sourceTree = "<group>"; };
 		C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		C406D5FB26DDCC7A00BA34A6 /* RepositoryPulls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPulls.swift; sourceTree = "<group>"; };
+		C406D5FE26DDD73E00BA34A6 /* PullsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullsTableViewCell.swift; sourceTree = "<group>"; };
 		C4580FD026DC142400003617 /* Challenge_Eldorado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge_Eldorado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4580FD326DC142400003617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4580FD526DC142400003617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				C4FF00D926DD11110062A923 /* RepositoryDetailView.swift */,
+				C406D5FE26DDD73E00BA34A6 /* PullsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				C46030A226DC33DF00E09AA1 /* SegmentedViewControler.swift in Sources */,
 				C4580FD426DC142400003617 /* AppDelegate.swift in Sources */,
 				C406D5F926DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift in Sources */,
+				C406D5FF26DDD73E00BA34A6 /* PullsTableViewCell.swift in Sources */,
 				C46030A626DC5BC300E09AA1 /* RepositoryTableViewCell.swift in Sources */,
 				C46030AA26DC7D1400E09AA1 /* SwiftRepository.swift in Sources */,
 				C4FF00DA26DD11110062A923 /* RepositoryDetailView.swift in Sources */,

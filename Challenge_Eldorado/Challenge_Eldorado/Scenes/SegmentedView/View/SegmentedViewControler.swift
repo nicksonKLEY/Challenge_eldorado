@@ -9,26 +9,26 @@ import UIKit
 
 class SegmentedViewController: UIViewController {
     
-    private let segmentedViews = ["All", "Saved"]
+    private let viewModel = SegmentedViewModel()
     
     let segmentedControl = UISegmentedControl()
     let tableView = UITableView()
     
-    var repositories: [SwiftRepository.Repository.Item] = []
+   
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        title = "Swift Repositories"
+        title = viewModel.title
         
-        SwiftRepository.requestRepositories { result in
+        viewModel.requestRepositories { result in
             switch result{
             case .success(let repository):
-                self.repositories = repository.items
+                self.viewModel.repositories = repository.items
             case .failure(let error):
                 print(error)
-                self.repositories = []
+                self.viewModel.repositories = []
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -63,10 +63,10 @@ extension SegmentedViewController : ViewCodeConfiguration{
     
     func configureView() {
         
-        for (key, item) in segmentedViews.enumerated() {
+        for (key, item) in viewModel.segmentedViews.enumerated() {
             segmentedControl.insertSegment(withTitle: item, at: key, animated: true)
         }
-        segmentedControl.addTarget(self, action: #selector(segmetedControlDidChange(_:)), for: .valueChanged)
+        segmentedControl.addTarget(viewModel, action: #selector(viewModel.segmetedControlDidChange(_:)), for: .valueChanged)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
@@ -78,60 +78,52 @@ extension SegmentedViewController : ViewCodeConfiguration{
         tableView.dataSource = self
         tableView.register(RepositoryTableViewCell.self, forCellReuseIdentifier: "RepositoryCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         
     }
     
-    @objc func segmetedControlDidChange(_ segmentedControl: UISegmentedControl){
-        
-        switch segmentedControl.selectedSegmentIndex {
-        case 0://all repositories
-            print(0)
-        case 1://saved repositories
-            print(1)
-        default:
-            return
-        }
-        
-    }
     
     
 }
 
 extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositories.count
+        return viewModel.repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath as IndexPath)
         guard let repositoryCell = cell as? RepositoryTableViewCell else { return UITableViewCell() }
         
-        let repository = repositories[indexPath.row]
+        let repository = viewModel.repositories[indexPath.row]
         
         repositoryCell.name.text = repository.name
         repositoryCell.ownerLogin.text = repository.owner?.login ?? ""
         repositoryCell.descriptionLabel.text = repository.description
-        repositoryCell.stargazers_count.text = String(repository.stargazers_count!)
+        repositoryCell.stargazers_count.text = String(repository.stargazers_count ?? 0)
         repositoryCell.license.text = repository.license?.name ?? "Unknow License"
         
         
         
-        if let lastUpdate = repository.pushed_at{
-            let formatter = ISO8601DateFormatter()
-            let datetime = formatter.date(from: lastUpdate)
-            //            formatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+        if let lastUpdate = repository.pushed_at {
             
-            repositoryCell.pushed_at.text = formatter.string(from: datetime!)
+            let formatter = ISO8601DateFormatter()
+            if let datetime = formatter.date(from: lastUpdate){
+                repositoryCell.pushed_at.text = formatter.string(from: datetime)
+            }
         }
         
         return repositoryCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let repository = RepositoryDetailView()
-        repository.repository = repositories[indexPath.row]
-        self.navigationController?.pushViewController(repository, animated: true)
+        let repository = viewModel.repositories[indexPath.row]
+        
+        let repositoryDetail = RepositoryDetailView()
+        let repositoryDetailViewModel = RepositoryDetailViewModel(repository)
+        
+        repositoryDetail.viewModel = repositoryDetailViewModel
+        
+        self.navigationController?.pushViewController(repositoryDetail, animated: true)
     }
     
 }

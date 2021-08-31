@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C406D5F726DDBE8800BA34A6 /* SegmentedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */; };
+		C406D5F926DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */; };
 		C4580FD426DC142400003617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD326DC142400003617 /* AppDelegate.swift */; };
 		C4580FD626DC142400003617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4580FD526DC142400003617 /* SceneDelegate.swift */; };
 		C4580FDE26DC142400003617 /* Challenge_Eldorado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4580FDC26DC142400003617 /* Challenge_Eldorado.xcdatamodeld */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewModel.swift; sourceTree = "<group>"; };
+		C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
 		C4580FD026DC142400003617 /* Challenge_Eldorado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge_Eldorado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4580FD326DC142400003617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4580FD526DC142400003617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,99 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C406D5EB26DDBBD300BA34A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C46030A926DC7D1400E09AA1 /* SwiftRepository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C406D5EC26DDBBDD00BA34A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C46030A526DC5BC300E09AA1 /* RepositoryTableViewCell.swift */,
+				C46030A126DC33DF00E09AA1 /* SegmentedViewControler.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C406D5ED26DDBBEC00BA34A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C406D5F626DDBE8800BA34A6 /* SegmentedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C406D5EE26DDBCBF00BA34A6 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C460309F26DC31E900E09AA1 /* ViewCodeConfiguration.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C406D5EF26DDBD0D00BA34A6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C406D5F126DDBD2C00BA34A6 /* DetailView */,
+				C406D5F026DDBD1C00BA34A6 /* SegmentedView */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C406D5F026DDBD1C00BA34A6 /* SegmentedView */ = {
+			isa = PBXGroup;
+			children = (
+				C406D5EB26DDBBD300BA34A6 /* Model */,
+				C406D5EC26DDBBDD00BA34A6 /* View */,
+				C406D5ED26DDBBEC00BA34A6 /* ViewModel */,
+			);
+			path = SegmentedView;
+			sourceTree = "<group>";
+		};
+		C406D5F126DDBD2C00BA34A6 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				C406D5F226DDBD4800BA34A6 /* Model */,
+				C406D5F326DDBD4D00BA34A6 /* View */,
+				C406D5F426DDBD5600BA34A6 /* ViewModel */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		C406D5F226DDBD4800BA34A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C406D5F326DDBD4D00BA34A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4FF00D926DD11110062A923 /* RepositoryDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C406D5F426DDBD5600BA34A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C406D5F826DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C406D5F526DDBDFF00BA34A6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C46030A726DC76C300E09AA1 /* UIColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C4580FC726DC142400003617 = {
 			isa = PBXGroup;
 			children = (
@@ -107,17 +204,14 @@
 		C4580FD226DC142400003617 /* Challenge_Eldorado */ = {
 			isa = PBXGroup;
 			children = (
+				C406D5F526DDBDFF00BA34A6 /* Extension */,
+				C406D5EE26DDBCBF00BA34A6 /* Protocol */,
+				C406D5EF26DDBD0D00BA34A6 /* Scenes */,
 				C4580FD326DC142400003617 /* AppDelegate.swift */,
 				C4580FD526DC142400003617 /* SceneDelegate.swift */,
-				C46030A126DC33DF00E09AA1 /* SegmentedViewControler.swift */,
 				C4580FDF26DC142700003617 /* Assets.xcassets */,
 				C4580FE426DC142700003617 /* Info.plist */,
 				C4580FDC26DC142400003617 /* Challenge_Eldorado.xcdatamodeld */,
-				C460309F26DC31E900E09AA1 /* ViewCodeConfiguration.swift */,
-				C46030A526DC5BC300E09AA1 /* RepositoryTableViewCell.swift */,
-				C46030A726DC76C300E09AA1 /* UIColorExtension.swift */,
-				C46030A926DC7D1400E09AA1 /* SwiftRepository.swift */,
-				C4FF00D926DD11110062A923 /* RepositoryDetailView.swift */,
 			);
 			path = Challenge_Eldorado;
 			sourceTree = "<group>";
@@ -269,9 +363,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46030A026DC31E900E09AA1 /* ViewCodeConfiguration.swift in Sources */,
+				C406D5F726DDBE8800BA34A6 /* SegmentedViewModel.swift in Sources */,
 				C46030A826DC76C300E09AA1 /* UIColorExtension.swift in Sources */,
 				C46030A226DC33DF00E09AA1 /* SegmentedViewControler.swift in Sources */,
 				C4580FD426DC142400003617 /* AppDelegate.swift in Sources */,
+				C406D5F926DDC4CF00BA34A6 /* RepositoryDetailViewModel.swift in Sources */,
 				C46030A626DC5BC300E09AA1 /* RepositoryTableViewCell.swift in Sources */,
 				C46030AA26DC7D1400E09AA1 /* SwiftRepository.swift in Sources */,
 				C4FF00DA26DD11110062A923 /* RepositoryDetailView.swift in Sources */,

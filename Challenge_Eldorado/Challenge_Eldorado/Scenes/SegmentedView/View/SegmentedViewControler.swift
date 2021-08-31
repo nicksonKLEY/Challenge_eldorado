@@ -48,6 +48,9 @@ extension SegmentedViewController : ViewCodeConfiguration{
     }
     
     func setupConstraint() {
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -68,8 +71,6 @@ extension SegmentedViewController : ViewCodeConfiguration{
         }
         segmentedControl.addTarget(viewModel, action: #selector(viewModel.segmetedControlDidChange(_:)), for: .valueChanged)
         
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.selectedSegmentTintColor = UIColor(red: (87/255), green: (84/255), blue: (85/255), alpha: 1)
         
@@ -77,7 +78,6 @@ extension SegmentedViewController : ViewCodeConfiguration{
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(RepositoryTableViewCell.self, forCellReuseIdentifier: "RepositoryCell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         
     }
     
@@ -118,8 +118,9 @@ extension SegmentedViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let repository = viewModel.repositories[indexPath.row]
         
-        let repositoryDetail = RepositoryDetailView()
         let repositoryDetailViewModel = RepositoryDetailViewModel(repository)
+        let repositoryDetail = RepositoryDetailView(repositoryDetailViewModel)
+        
         
         repositoryDetail.viewModel = repositoryDetailViewModel
         
